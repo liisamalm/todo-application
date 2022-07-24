@@ -9,7 +9,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MainPageComponent } from './main-page/main-page.component';
 import { TasklistComponent } from './tasklist/tasklist.component';
 import { AddTaskComponent } from './add-task/add-task.component';
-import { ModifyTaskComponent } from './modify-task/modify-task.component';
 import { TaskService } from './task.service';
 
 @NgModule({
@@ -18,7 +17,6 @@ import { TaskService } from './task.service';
     MainPageComponent,
     TasklistComponent,
     AddTaskComponent,
-    ModifyTaskComponent
   ],
   imports: [
     BrowserModule,

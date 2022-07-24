@@ -3,7 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { TaskService } from '../task.service';
 import { Task } from '../task';
 import { ActivatedRoute } from '@angular/router';
-import { faList, faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faList, faAngleDoubleLeft, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
 
 @Component({
@@ -19,6 +19,7 @@ export class TasklistComponent implements OnInit {
 
   faList = faList;
   faAngleDoubleLeft = faAngleDoubleLeft;
+  faPlus = faPlus;
 
   constructor(private taskService: TaskService,
               public route: ActivatedRoute,

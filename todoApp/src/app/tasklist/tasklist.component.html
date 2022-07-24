@@ -36,10 +36,17 @@
   <div>
       <a (click)="goBack()" class="">
         <button>
-          <fa-icon [icon]="faAngleDoubleLeft"></fa-icon>  
+          <fa-icon [icon]="faAngleDoubleLeft"></fa-icon> Go Back  
       </button>
     </a>
+      
+    
   </div>
+  <a routerLink="{{ '/main/addtask' }}" class="">
+    <button>
+     <fa-icon [icon]="faPlus"></fa-icon>  Add New Task
+  </button>
+</a>
 </div>
 
 <!-- Edit Task Modal -->

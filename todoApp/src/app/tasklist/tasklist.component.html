@@ -1,0 +1,98 @@
+<div class="wrapper">
+  <div class="list">
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px">
+      <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+        <svg class="bi me-2" width="30" height="24">
+          <use xlink:href="#bootstrap"></use>
+        </svg>
+        <span class="fs-5 fw-semibold">
+          <fa-icon [icon]="faList"></fa-icon> You Can Do This
+        </span>
+      </a>
+      <div id="list-container">
+        <div *ngFor="let task of tasks" class="list-group list-group-flush border-bottom scrollarea">
+          <a class="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
+            <div class="d-flex w-100 align-items-center justify-content-between">
+              <strong class="mb-1"> {{ task.name }}</strong>
+              <small>Priority: {{ task.priority }}</small>
+            </div>
+            <div class="col-10 mb-1 small">{{ task.about }}</div>
+            <div class="float-right btn-group btn-group-sm">
+              <div class="buttons">
+                <button (click)="onOpenModal('edit', task)" data-bs-toggle="modal" data-bs-target="#updateTaskModal"
+                  type="button" class="btn btn-secondary btn-sm">
+                  Edit
+                </button>
+                <button (click)="onDeleteTask(task.id)" type="button" class="btn btn-secondary btn-sm">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+      <a (click)="goBack()" class="">
+        <button>
+          <fa-icon [icon]="faAngleDoubleLeft"></fa-icon> Go Back  
+      </button>
+    </a>
+      
+    
+  </div>
+  <a routerLink="{{ '/main/addtask' }}" class="">
+    <button>
+     <fa-icon [icon]="faPlus"></fa-icon>  Add New Task
+  </button>
+</a>
+</div>
+
+<!-- Edit Task Modal -->
+<div class="modal fade" id="updateTaskModal" tabindex="-1" aria-labelledby="updateTaskModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Edit Task {{ editTask?.name }}
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" ngModel="{{ editTask?.name }}" name="name" class="form-control" id="name"
+              placeholder="Name" required />
+          </div>
+
+          <!-- piilotetut -->
+          <input type="hidden" ngModel="{{ editTask?.id }}" name="id" class="form-control" id="id" placeholder="" />
+
+          <!-- näkyvät jatkuu -->
+          <div class="form-group">
+            <label for="about">Task is about</label>
+            <input type="text" ngModel="{{ editTask?.about }}" name="about" class="form-control" id="about"
+              placeholder="about" required />
+          </div>
+          <div class="form-group">
+            <label for="priority">Set priority (high, medium, later)</label>
+            <input type="text" ngModel="{{ editTask?.priority }} " name="priority" class="form-control" id="priority"
+              placeholder="priority" required />
+          </div>
+
+          <!-- CLOSE & SAVE CHANGES -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+            <button (click)="onUpdateTask(editForm.value)" type="button" data-bs-dismiss="modal" class="btn btn-primary">
+              Save changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

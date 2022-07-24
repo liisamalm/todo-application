@@ -1,0 +1,38 @@
+<div class="wrapper">
+    <form #addForm="ngForm" (ngSubmit)="onAddTask(addForm)">
+
+      <div class="mb-3">
+          <label for="name" class="form-label">Name of the TASK</label>
+          <input type="text" name="name" [(ngModel)]="task.name" class="form-control" id="name" placeholder="Name of the Task" required>
+        </div>
+      
+        <div class="mb-3">
+          <label for="about" class="form-label">Content of the Task</label>
+          <div class="form-floating">
+              <textarea name="about" class="form-control" placeholder="Leave a comment here" [(ngModel)]="task.about" id="about" style="height: 100px" required></textarea>
+            </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="priority" class="form-label">Set the priority</label>
+          <select name="priority" [(ngModel)]="task.priority" class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Later">Later</option>
+            </select>
+        </div>
+        <button [disabled]="addForm.invalid" type="button" id="add-task-form" class="btn btn-secondary" type="submit" value="Submit">Add task</button>
+    </form>
+</div>
+
+<a (click)="goBack()">
+  <button class="glow-on-hover"> 
+    <fa-icon [icon]="faAngleDoubleLeft"></fa-icon>
+  </button>
+</a>
+<button class="glow-on-hover">
+  <a routerLink="{{ '/main/tasklist' }}">
+    See The List
+  </a>
+</button>

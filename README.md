@@ -17,10 +17,9 @@ This is a Web application where you can
 
 Clone the repository git clone https://github.com/liisamalm/todo-application
 
-Install modules by running npm install in the angular folder.
+Install modules by running npm install in the angular folder (todoApp).
 
 Run mvn spring-boot:run in the todotodo folder.
 
 Run ng serve in the todoApp folder. Navigate to http://localhost:4200/main. 
 
-Still in progress...latest in develop branch
